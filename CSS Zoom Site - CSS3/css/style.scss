@@ -1,0 +1,275 @@
+@import "normalize";
+@import "globals";
+@import "../fonts/stylesheet.css";
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:400,600);
+
+body{
+    background: $bg;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+*{  
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* *********************************************
+    Scaffolds
+***********************************************/
+#wrap{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+#scroll-proxy {
+    height: 2400px;
+}
+
+#container{
+    width: $full + px;
+    margin: -270px auto;
+    position: relative;
+    height: 540px;
+    top: 50%;
+}
+
+#nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 100;
+    
+    li{
+        float: left;
+        margin-right: 10px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    
+    a{
+        text-decoration: none;
+        background: #fff;
+        color: #000;
+        padding: 7px 10px 4px;
+        font-weight: bold;
+    }
+}
+
+#environment{
+    @include perspective(400px);
+    @include transform(perspective(400px));
+    @include perspective-origin(center 375px);
+    width: 100%;
+    height: 540px;
+}
+
+#content{
+    @include transform-style(preserve-3d);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    section{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+}
+
+.left-block, .right-block{
+    width: $third + px;
+    position: absolute;
+    left: 0;
+    top: 250px;
+    padding: 0 15px 0 0;
+    text-align: center;
+}
+
+.right-block{
+    left: auto;
+    right: 0;
+    padding: 0 0 0 15px;
+}
+
+.bottom-block{
+    position: absolute;
+    width: 100%;
+    top: 450px;
+    display: block;
+    font-family: $cubano;
+    font-weight: normal;
+    font-size: 70px;
+    margin: 0;
+    color: #000;
+    text-align: center;
+}
+
+a:hover{
+    color: #fff;
+}
+
+/* *********************************************
+    Global
+***********************************************/
+h1, h2, h3{
+    line-height: 1;
+    margin: 0;
+}
+h1, h2{
+    font-family: $cubano;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+h1{
+    font-size: 132px;
+    text-align: center;
+}
+
+h2{
+    background: #000;
+    color: $bg;
+    display: block;
+    font-size: 35px;
+    padding: 10px;
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+h3{
+    margin-bottom: 10px;
+}
+
+/* *********************************************
+    Intro page
+***********************************************/
+#intro{
+    .left-block{
+        text-align: center;
+        
+        h1{
+            font-size: 136px;
+        }
+        h3{
+            font-size: 20px;
+        }
+        li{
+            font-weight: 400;
+            
+            &:first-child{
+                font-size: 48px;
+            }
+            
+            &:nth-child(2){
+                font-size: 29px;
+            }
+            
+            &:nth-child(3){
+                font-size: 46px;
+            }
+            
+             &:nth-child(4){
+                font-size: 42px;
+            }
+            
+             &:nth-child(5){
+                font-size: 47px;
+            }
+        }
+    }
+    
+    .right-block{
+        h3{
+            font-size: 38px;
+        }
+        p{
+            color: #fff;
+            font-size: 32px;
+            margin: 0;
+            text-align: center;
+            span{
+                display: block;
+            }
+            .l1{
+                font-size: 22px;
+            }
+            .l2{
+                font-size: 86px;
+            }
+            .l3{
+                font-size: 22px;
+                margin-top: -10px;
+            }
+            .l4{
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+#intro{
+    @include animate( zoomIn );
+}
+
+#support{
+    @include transform((translate3d( 0, 0, -1000px )));
+    
+    h1{
+        font-size: 104px;
+    }
+    
+    .left-block, .right-block{
+        top: 215px;
+    }
+    
+    h3{
+        font-size: 20px;
+    }
+    li{
+        font-weight: 400;
+        
+        &:first-child{
+            font-size: 54px;
+        }
+        
+        &:nth-child(2){
+            font-size: 53px;
+        }
+        
+        &:nth-child(3){
+            font-size: 67px;
+        }
+        
+         &:nth-child(4){
+            font-size: 25px;
+        }
+    }
+}
+
+#final{
+    @include transform((translate3d( 0, 0, -2000px )));
+    //opacity: 0.05;
+}
+
+@-webkit-keyframes zoomIn{
+    0%{
+        @include transform((translate3d( 0, 0, -100px )));
+        opacity: 0.5;
+    }
+    
+    100%{
+        @include transform((translate3d( 0, 0, 0)));
+        opacity: 1;
+    }
+}
